@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        h3 {
+            color: #333;
+        }
+        input {
+            width: 50px;
+            height: 20px;
+            margin: 5px;
+            text-align: center;
+        }
+        button {
+            width: 100px;
+            height: 30px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #inputDiv {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+        #outputDiv {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            visibility: hidden;
+        }
+    </style>
+<head>
+    <title>AUBURN UNIVERSITY COMM 1000 - PUBLIC SPEAKING GRADE CALCULATOR</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<h1>AUBURN UNIVERSITY COMM 1000 - PUBLIC SPEAKING GRADE CALCULATOR</h1>
+<div id="inputDiv">
+    <form name="input">
+        <h3>Absences: </h3>
+        <input type="number" name="participation" placeholder="0">
+        <h3>Introductory Speech: </h3>
+        <input type="number" name="speech1" placeholder="0">
+        <h3>Group Assignment: </h3>
+        <input type="number" name="group" placeholder="0">
+        <h3>Informative Speech: </h3>
+        <input type="number" name="speech2" placeholder="0">
+        <h3>Persuasive Speech: </h3>
+        <input type="number" name="speech3" placeholder="0">
+        <h3>Final Exam: </h3>
+        <input type="number" name="final" placeholder="0">
+        <br>
+        <button type="submit" name="submit">Calculate</button>
+        <br>
+    </form>
+</div>
+<div id="outputDiv">
+    <h1 id="grade">GRADE: </h1>
+</div>
+</html>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var participation = (document.querySelector('input[name="participation"]').value-1) * 0.10;
+        if (participation < 0) {
+            participation = 0;
+        }
+        var speech1 = (document.querySelector('input[name="speech1"]').value) * 0.05;
+        var group = (document.querySelector('input[name="group"]').value) * 0.10;
+        var speech2 = (document.querySelector('input[name="speech2"]').value) * 0.30;
+        var speech3 = (document.querySelector('input[name="speech3"]').value) * 0.30;
+        var final = (document.querySelector('input[name="final"]').value) * 0.15;
+        var grade = (participation + speech1 + group + speech2 + speech3 + final);
+        console.log(grade);
+        document.querySelector('#outputDiv').style.visibility = 'visible';
+        document.querySelector('#grade').innerHTML = 'GRADE: ' + grade + '%';
+    });
+</script>
