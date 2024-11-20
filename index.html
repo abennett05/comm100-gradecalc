@@ -88,7 +88,7 @@
         var speech2 = (document.querySelector('input[name="speech2"]').value) * 0.30;
         var speech3 = (document.querySelector('input[name="speech3"]').value) * 0.30;
         var final = (document.querySelector('input[name="final"]').value) * 0.15;
-        var grade = (participation + speech1 + group + speech2 + speech3 + final);
+        var grade = (10 + (-1*participation) + speech1 + group + speech2 + speech3 + final);
         console.log(grade);
         document.querySelector('#outputDiv').style.visibility = 'visible';
         document.querySelector('#grade').innerHTML = 'GRADE: ' + grade + '%';
